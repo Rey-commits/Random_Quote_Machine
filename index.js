@@ -16,6 +16,11 @@ function App(){
         fetchData();
     }, [])
 
+    const getNewQuote = () => {
+        let randIndex = Math.floor(Math.random() * quotes.length);
+        setRandomQuote(quotes[randIndex])
+    }
+
     return (
         <div className="container pt-5">
         <div className="jumbotron">
@@ -25,18 +30,20 @@ function App(){
                     {randomQuote ? (
                         <>
                         <h5 className="card-title">- {randomQuote.author  || "No author"}</h5>
-                        <p className="card-text" >{randomQuote.text} </p>
+                        <p className="card-text">&quot;{randomQuote.text}&quot;</p>
                         </>
                     ):(
                         <h2>Loading</h2>
                     )}
+
+                    <div className="row">
+                        <button onClick={getNewQuote}>New Quote</button>
+                        <a href=""></a>
+                        <a href=""></a>
+                    </div>
                 </div>                
             </div>
         </div>
-        
-        {quotes.map(quote => (
-            <div>{quote.text}</div>
-        ))}
         </div>
     )
 }
